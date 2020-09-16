@@ -49,7 +49,6 @@ function generatePassword() {
     wantedLen = parseInt(wantedLen, 10);
     if (typeof wantedLen === "number" && wantedLen > 7 && wantedLen < 129) {
         pwLength = wantedLen;
-        console.log("Requested length is: ", pwLength);
       }
   }
   
