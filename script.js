@@ -34,15 +34,51 @@ generateBtn.addEventListener("click", writePassword);
 
 //////////////////////////////////////////////////////////////////////
 function generatePassword() {
-  passwordInputs();
+  //set variables
+  const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const lower = "abcdefghijklmnopqrstuvwxyz";
+  const num = "0123456789";
+  const special = ` !#$%&'()*+,-./:;<=>?@[]^_\`{|}~"`
+  
+  let pwLength;
+  let lib = "";
 
-
+  //ask user for length of password
+  while (!pwLength) {
+    let wantedLen = prompt("How long do you want your password? Integers only please... between 8 and 128");
+    wantedLen = parseInt(wantedLen, 10);
+    if (typeof wantedLen === "number" && wantedLen > 7 && wantedLen < 129) {
+        pwLength = wantedLen;
+        console.log("Requested length is: ", pwLength);
+      }
+  }
+  
+  //ask user for which character set to use
+  if (confirm("Do you want uppercase characters?")) {
+    lib += upper;
+  };
+  if (confirm("Do you want lowercase characters?")) {
+    lib += lower;
+  };
+  if (confirm("Do you want numeric characters?")) {
+    lib += num;
+  };
+  if (confirm("Do you want special characters?")) {
+    lib += special;
+  };
+  if (lib.length === 0) {
+    alert("You need to choose some time of wanted characters! Existing...");
+    return null;
+  };
+  return pwGenerator(pwLength, lib);
 }
 
-function passwordInputs() {
-  var passWordLength = prompt("How many characters does your password need to be?");
-  var characterTypes = prompt(
-    "Which password types would you like? lowercase, uppercase, numeric, and/or special characters?"
-  );
-  
+function pwGenerator(pwLength, lib) {
+  //creates random password
+  let pw = "";
+  for (i =0; i <pwLength; i++) {
+    let x = Math.floor(Math.random() * lib.length)
+    pw += lib[x];
+  }
+  return pw;
 }
