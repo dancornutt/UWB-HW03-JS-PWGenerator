@@ -1,15 +1,19 @@
 # Secret Password Generator Site
-This project is centered on creating a mobile first, responsive website. The basis was utilizing Bootsrap's grid system and components. After basic structure was met, the styling needed to loosely match the pictures in the following screen widths: 400px, 768px, and 992px.
+This project was centered around using javascript on an already existing website. The html and css files were not changed, only a javascript file was added to the site.
+
+The site should be used to generate a random password which can be used on other sites or applications. Passwords are required to be between 8 and 128 inclusive. The possible password characters can be lowercase letters, uppercase letter, numbers and/or special characters. If the user does not select any options the script exits.
+
+Once the questions are answered by the user, the program displays the new random password in the output window. This can then be copied and used by the user.
 
 ## Getting Started
 
-Luckily this is a static site so there isn't much set-up to do. You should have a decent understanding of html and css. Knowing Bootstrap would be very helpful.
+Luckily this is a static site so there isn't much set-up to do. You should have a decent understanding of javascript if you want to understand how the passwords are calculated.
 
 ### Prerequisites
 
-You'll need to have a good text editor or IDE for making edits to the code. For this project VS Code was used and was very useful.
+You'll need to have a good IDE for making edits to the code. For this project VS Code was used and was very useful.
 Below are the tools used for this site:
-    * Text Editor
+    * IDE
     * Git
     * Github account
     * Browser (Chrome was used for development)
@@ -25,15 +29,12 @@ These are the installation steps to get the site up and running:
 
 ## Running the tests
 
-No tests were constructed, in the future there will be custom javascript but at this time there is none.
+No tests were designed for this project. This is a future area of need and opportunity.
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Boostrap](https://getbootstrap.com/) - The web css framework used
+* [javascript](https://www.javascript.com/) - The web css framework used
 * [git](https://git-scm.com/) - Version control
 * [GitHub](https://github.com/) - Used to store the code base
 * [Chrome](https://www.google.com/chrome/) - Used as the browser
@@ -45,7 +46,3 @@ Anyone is welcome to contribute! Reach out via github for collaboration.
 ## Authors
 
 * **Dan Cornutt** - *Complete work*
-
-## Acknowledgments
-
-* Shout out to Metages Worku for finding the closest font family!
