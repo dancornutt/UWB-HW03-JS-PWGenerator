@@ -7,7 +7,7 @@ Once the questions are answered by the user, the program displays the new random
 
 ## Getting Started
 
-Luckily this is a static site so there isn't much set-up to do. You should have a decent understanding of javascript if you want to understand how the passwords are calculated.
+Luckily this is a static site so there isn't much set-up to do. You should have a decent understanding of javascript if you want to understand how the passwords are calculated. The deployed site is found at: [Password Generator](https://dancornutt.github.io/UWB-HW03-JS-PWGenerator/)
 
 ### Prerequisites
 
