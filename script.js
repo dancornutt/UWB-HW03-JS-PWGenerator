@@ -28,8 +28,7 @@ let charLibObj = {
   special: ` !#$%&'()*+,-./:;<=>?@[]^_\`{|}~"`
 };
 
-let chosenLibsArr = [];
-let pwLength = 0;
+let chosenLibsArr;
 
 // Write password to the #password input
 function writePassword() {
@@ -44,6 +43,9 @@ generateBtn.addEventListener("click", writePassword);
 
 //////////////////////////////////////////////////////////////////////
 function generatePassword() {
+  //set variable values
+  let pwLength = 0;
+  chosenLibsArr = [];
   //ask user for length of password
   while (!pwLength) {
     let wantedLen = prompt("How long do you want your password? Integers only please... between 8 and 128");
@@ -69,10 +71,12 @@ function generatePassword() {
     alert("You need to choose some time of wanted characters! Existing...");
     return null;
   };
-  return pwGenerator();
+  return pwGenerator(pwLength);
 }
 
-function pwGenerator() {
+function pwGenerator(passwordLength) {
+  //set inital variables
+  let pwLength = passwordLength;
   let pw = "";
   let countLibs = chosenLibsArr.length;
   //sets inital pw characters to ensure chosen types in pw
