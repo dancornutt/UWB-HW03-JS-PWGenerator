@@ -21,6 +21,16 @@
 
 var generateBtn = document.querySelector("#generate");
 
+let charLibObj = {
+  upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  lower: "abcdefghijklmnopqrstuvwxyz",
+  num: "0123456789",
+  special: ` !#$%&'()*+,-./:;<=>?@[]^_\`{|}~"`
+};
+
+let chosenLibsArr = [];
+let pwLength = 0;
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -34,15 +44,6 @@ generateBtn.addEventListener("click", writePassword);
 
 //////////////////////////////////////////////////////////////////////
 function generatePassword() {
-  //set variables
-  const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const lower = "abcdefghijklmnopqrstuvwxyz";
-  const num = "0123456789";
-  const special = ` !#$%&'()*+,-./:;<=>?@[]^_\`{|}~"`
-  
-  let pwLength;
-  let lib = "";
-
   //ask user for length of password
   while (!pwLength) {
     let wantedLen = prompt("How long do you want your password? Integers only please... between 8 and 128");
@@ -51,33 +52,56 @@ function generatePassword() {
         pwLength = wantedLen;
       }
   }
-  
   //ask user for which character set to use
   if (confirm("Do you want uppercase characters?")) {
-    lib += upper;
+    chosenLibsArr.push('upper');
   };
   if (confirm("Do you want lowercase characters?")) {
-    lib += lower;
+    chosenLibsArr.push('lower');
   };
   if (confirm("Do you want numeric characters?")) {
-    lib += num;
+    chosenLibsArr.push('num');
   };
   if (confirm("Do you want special characters?")) {
-    lib += special;
+    chosenLibsArr.push('special');
   };
-  if (lib.length === 0) {
+  if (chosenLibsArr.length === 0) {
     alert("You need to choose some time of wanted characters! Existing...");
     return null;
   };
-  return pwGenerator(pwLength, lib);
+  return pwGenerator();
 }
 
-function pwGenerator(pwLength, lib) {
-  //creates random password
+function pwGenerator() {
   let pw = "";
-  for (i =0; i <pwLength; i++) {
-    let x = Math.floor(Math.random() * lib.length)
+  let countLibs = chosenLibsArr.length;
+  //sets inital pw characters to ensure chosen types in pw
+  for (let i = 0; i < countLibs; i++) {
+    let lib = charLibObj[chosenLibsArr[i]];
+    let x = Math.floor(Math.random() * lib.length);
     pw += lib[x];
   }
-  return pw;
+  //randomly fills the remaining pw characters from different possible character sets
+  let remainingChar = pwLength - countLibs;
+  for (let i = 0; i < remainingChar; i++) {
+    let lib = charLibObj[chosenLibsArr[Math.floor(Math.random() * countLibs)]];
+    let x = Math.floor(Math.random() * lib.length);
+    pw += lib[x];
+  }
+  //return shuffle pw to randomize inital chars with the rest
+  return shuffle(pw);
+}
+
+function shuffle(array) {
+  let currentIndex = array.length, temporaryValue, randomIndex;
+  while (currentIndex !== 0) {
+    // pick a remaining element in array
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    //exchange it with the current element
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
 }
